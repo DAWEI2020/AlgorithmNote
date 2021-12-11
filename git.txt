@@ -1,0 +1,8 @@
+
+git status
+
+git add file
+
+git commint -m 'updata'
+
+git push
