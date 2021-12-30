@@ -1,12 +1,46 @@
 #include <cstdio>
 #include <malloc.h>
+#include <iostream>
+
+using namespace std;
 
 /* 单链表结点类型的定义 */
 typedef struct node
 {
 	int data;           /* int型的结点数据域 */
 	struct node* next;  /* 结点的指针域 */
-}NODE, *LinkList;
+}node, *LinkList;
+
+/* 单链表的初始化 */
+LinkList LinkListInit()
+{
+	node* L;
+	L = (node*)malloc(sizeof(node));
+	if (L == NULL)
+	{
+		cout << "申请内存空间失败！" << endl;
+	}
+	L->next = NULL;
+	return L;
+}
+
+/* 单链表创建 */
+LinkList LinkListCreat()
+{
+	node* L;
+	L = (node*)malloc(sizeof(node));
+	L->next = NULL;
+    int num;
+    while (cin>>num)
+    {
+		node* p;
+        p = (node*)malloc(sizeof(node));
+        p->data = num;
+        p->next = L->next;
+        L->next = p;
+    }
+    return L;
+}
 
 /* 查找：在表中查找第k个元素，若找到返回该元素指针，否者返回空指针NULL */
 LinkList Find_List(LinkList L, int k)  /* L为带头结点单链表的头指针 */
@@ -34,7 +68,7 @@ int Insert_List(LinkList L, int k, int newElem)
 	if (k == 1) p = L;
 	else p = Find_List(L, k - 1);
 	if (!p) return -1;
-	s = (NODE*)malloc(sizeof(NODE));  /* 创建新元素的结点空间 */
+	s = (node*)malloc(sizeof(node));  /* 创建新元素的结点空间 */
 	if (!s) return -1;
 	s->data = newElem;
 	s->next = p->next;

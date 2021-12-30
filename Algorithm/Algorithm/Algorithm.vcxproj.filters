@@ -25,4 +25,9 @@
       <Filter>linklist</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="linklist.h">
+      <Filter>linklist</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
